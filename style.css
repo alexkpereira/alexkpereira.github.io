@@ -137,20 +137,21 @@ a:hover { text-decoration-thickness: 2px; }
 .hero-links { font-size: 1rem; margin: 0; }
 .hero-links .sep { color: var(--muted); margin: 0 0.45em; }
 
-/* Landing page: a slightly wider column, with the photo beside the introduction */
-.landing { max-width: 48rem; }
+/* Landing page: a wider column, with the photo to the right of the introduction */
+.landing { max-width: 56rem; }
+.landing > section { max-width: 42rem; }   /* sections below keep the normal reading width */
 .intro {
   display: grid;
-  grid-template-columns: 16rem 1fr;   /* photo width | text */
-  column-gap: 2.25rem;
-  align-items: stretch;               /* photo runs the height of the text */
+  grid-template-columns: 1fr 20rem;   /* text | photo width */
+  column-gap: 2.5rem;
+  align-items: start;
   margin: 2.5rem 0 1.5rem;
 }
+.intro-text { grid-column: 1; grid-row: 1; }
 .headshot {
+  grid-column: 2; grid-row: 1;
   width: 100%;
-  height: 100%;
-  object-fit: cover;                  /* trims the photo's edges if needed, never stretches it */
-  object-position: 50% 25%;
+  height: auto;                       /* keeps the photo's original proportions */
   border-radius: 2px;
 }
 .intro-text p:last-child { margin-bottom: 0; }
@@ -179,10 +180,10 @@ h3 {
 p { margin: 0 0 1rem; }
 
 .entry { margin: 0 0 1.4rem; }
-.entry .title { font-style: italic; }
+.entry .title { font-style: normal; font-weight: 500; }   /* paper titles upright, medium weight; journal titles italic */
 .entry .title.plain { font-style: normal; }
-.entry .with { font-style: normal; }
-.entry .summary { margin: 0.4rem 0 0.2rem; }
+.entry .with { font-style: normal; font-weight: 400; }
+.entry .summary { margin: 0.35rem 0 0.2rem; font-size: 0.95rem; }
 .entry .meta  { color: var(--muted); font-size: 0.95rem; }
 .entry .links { font-size: 0.95rem; margin-top: 0.15rem; }
 
@@ -191,9 +192,12 @@ ul.plain li { margin: 0 0 1rem; }
 
 .areas { color: var(--muted); }
 .amp { font-style: italic; padding-right: 0.08em; }   /* EB Garamond’s italic ampersand, used on its own */
-.subtitle { font-style: italic; font-size: 1.1rem; margin: -0.6rem 0 0.35rem; }
+/* PRISM section on the landing page */
+.prism-name { font-size: 1.1rem; margin: -0.5rem 0 0.3rem; }
+.prism .meta { margin: 0 0 0.9rem; }
+.prism-desc { font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.9rem; }
+.prism-join { margin: 1.25rem 0 0; }
 section > .meta { color: var(--muted); font-size: 0.95rem; }
-section > .links { font-size: 0.95rem; }
 
 /* Inner pages: a plain page title instead of the large name */
 .page-head { padding: 4rem 0 0.5rem; }
