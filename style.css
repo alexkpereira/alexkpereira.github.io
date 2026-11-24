@@ -190,6 +190,7 @@ ul.plain { list-style: none; padding: 0; margin: 0; }
 ul.plain li { margin: 0 0 1rem; }
 
 .areas { color: var(--muted); }
+.amp { font-style: italic; padding-right: 0.08em; }   /* EB Garamond’s italic ampersand, used on its own */
 .subtitle { font-style: italic; font-size: 1.1rem; margin: -0.6rem 0 0.35rem; }
 section > .meta { color: var(--muted); font-size: 0.95rem; }
 section > .links { font-size: 0.95rem; }
