@@ -1,0 +1,299 @@
+/* ============================================================
+   FONT FILES — EB Garamond, served from the site's own fonts folder
+   ============================================================ */
+@font-face { font-family: "EB Garamond"; src: url("fonts/eb-garamond-regular.woff2") format("woff2");
+             font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/eb-garamond-italic.woff2") format("woff2");
+             font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/eb-garamond-medium.woff2") format("woff2");
+             font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/eb-garamond-semibold.woff2") format("woff2");
+             font-weight: 600 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("fonts/eb-garamond-semibolditalic.woff2") format("woff2");
+             font-weight: 600 700; font-style: italic; font-display: swap; }
+
+/* ============================================================
+   DESIGN TOKENS — the values you'll most often want to change.
+   Edit these and every page on the site updates.
+   ============================================================ */
+:root {
+  /* Colours */
+  --paper:   #f7f6f2;   /* page background: warm off-white */
+  --ink:     #1a1a1c;   /* body text: near-black, not pure black */
+  --muted:   #5c5c62;   /* secondary text: dates, captions */
+  --rule:    #e6e5e2;   /* hairline dividers */
+  --accent:  #7a0000;   /* Stanford Cardinal Dark: links, the rule under your name, current menu item */
+
+  /* Type */
+  --serif: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Palatino,
+           Georgia, serif;
+  --measure: 42rem;     /* max line length for reading text (~66 characters) */
+  --base:    1.125rem;  /* body font size (18px) */
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--base);
+  line-height: 1.65;
+  /* nicer serif rendering */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* One centred column for everything */
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness 0.12s ease;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a { transition: none; }
+}
+
+/* ============================================================
+   TOP NAV
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  z-index: 10;
+}
+.nav .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.nav__name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.98rem;
+}
+.nav__links a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav__links a:hover { color: var(--accent); }
+
+/* ============================================================
+   HERO / LANDING
+   ============================================================ */
+.hero { padding: 4.5rem 0 2rem; }
+
+.hero h1 {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+/* the one accent flourish: a short rule under the name */
+.hero h1::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background: var(--accent);
+  margin: 1.1rem 0 1.75rem;
+}
+.hero .role {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin: 1.1rem 0 1.75rem;
+}
+
+.headshot {
+  float: right;
+  width: 190px;                 /* size of the photo on wide screens */
+  height: auto;
+  margin: 0.4rem 0 1.25rem 2.25rem;
+  border-radius: 2px;
+}
+@media (max-width: 640px) {
+  /* on phones: name first, then the photo, then the text */
+  .hero { display: flex; flex-direction: column; }
+  .hero > * { order: 2; }
+  .hero > h1 { order: 0; }
+  .hero > .headshot { order: 1; float: none; width: 62%; max-width: 260px; margin: 0 0 1.75rem; }
+}
+.hero::after { content: ""; display: block; clear: both; }
+
+.links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+section { padding: 2.75rem 0; }
+section + section { border-top: 1px solid var(--rule); }
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 1.1rem;
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.35rem;
+}
+p { margin: 0 0 1rem; }
+
+.entry { margin: 0 0 1.4rem; }
+.entry .title { font-style: italic; }
+.entry .title.plain { font-style: normal; }
+.entry .with { font-style: normal; }
+.entry .summary { margin: 0.4rem 0 0.2rem; }
+.entry .meta  { color: var(--muted); font-size: 0.95rem; }
+.entry .links { font-size: 0.95rem; margin-top: 0.15rem; }
+
+ul.plain { list-style: none; padding: 0; margin: 0; }
+ul.plain li { margin: 0 0 1rem; }
+
+.areas { color: var(--muted); }
+
+/* Inner pages: a plain page title instead of the large name */
+.page-head { padding: 4rem 0 0.5rem; }
+.page-head h1 {
+  font-size: 2rem;
+  line-height: 1.15;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* The menu item for the page you are on */
+.nav__links a[aria-current="page"] { color: var(--accent); }
+
+.contact { margin: 1.25rem 0 0; }
+
+/* ============================================================
+   CV PAGE — two columns: dates on the left, entries on the right
+   ============================================================ */
+
+.cv { font-size: 1rem; line-height: 1.45; padding: 3rem 0 1rem; }
+.cv-download { text-align: right; font-size: 0.95rem; margin: 0 0 1rem; }
+.cv-head { text-align: center; margin-bottom: 2rem; }
+.cv-head h1 { font-size: 2rem; font-weight: 700; margin: 0 0 0.5rem; }
+.cv-head div { line-height: 1.5; }
+
+.cv .row {
+  display: grid;
+  grid-template-columns: 7.25rem 1fr;   /* width of the date column */
+  column-gap: 0.75rem;
+  margin: 0 0 0.6rem;
+  break-inside: avoid;                   /* never split an entry across pages */
+}
+.cv .row.sub { margin: 0.9rem 0 0.5rem; }
+.cv .row.tight { margin-bottom: 0.15rem; }   /* compact single-line lists, e.g. coursework */
+.cv .more { padding-left: 2.25em; }       /* indented continuation lines */
+.cv .keep { break-inside: avoid; }  /* keep a subheading with its first entry */
+.cv .keep.split, .cv .keep.split .row { break-inside: auto; }  /* very long entries may run across a page */
+.cv .note { display: block; font-size: 0.92em; color: var(--muted); }
+.cv-areas .row { margin: 0; }
+.cv-areas { margin-bottom: 1.5rem; }
+
+.cv h2 {
+  font-size: 1.05rem; font-weight: 700;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.2rem; margin: 1.75rem 0 0.8rem;
+  break-after: avoid;                    /* keep a heading with what follows */
+}
+.cv h2 .key { font-weight: 400; }
+.cv h3 { font-size: 1rem; font-weight: 700; margin: 0; }
+.cv h4 { font-size: 1rem; font-weight: 400; font-style: italic; margin: 0; }
+
+.print-only { display: none; }
+
+@media (max-width: 640px) {
+  .cv .row { grid-template-columns: 5.5rem 1fr; }
+  .cv .more { padding-left: 1em; }
+}
+
+/* ============================================================
+   PRINTING / PDF — only the CV content, on white, 12pt
+   ============================================================ */
+@page { size: Letter; margin: 1in; }
+@media print {
+  .nav, footer, .screen-only { display: none !important; }
+  .print-only { display: block; }
+  body { background: #fff; font-size: 12pt; }
+  .wrap, .cv-page { max-width: none; padding: 0; margin: 0; }
+  .cv { padding: 0; font-size: 12pt; line-height: 1.3; }
+  .cv .row { margin-bottom: 0.45rem; }
+  .cv .row.sub { margin: 0.7rem 0 0.35rem; }
+  .cv .row.tight { margin-bottom: 0.1rem; }
+  .cv h2 { margin: 1.4rem 0 0.6rem; }
+  .cv-head h1 { font-size: 20pt; }
+  .cv h2 { font-size: 12pt; }
+  /* in print, a plain two-column layout that can run across a page break */
+  .cv .row { display: block; }
+  .cv .row::after { content: ""; display: block; clear: both; }
+  .cv .row .d { float: left; width: 1.15in; }
+  .cv .row .c { margin-left: 1.3in; }
+  .cv .row, .cv .keep { break-inside: auto; orphans: 2; widows: 2; }  /* entries may continue on the next page… */
+  .cv .row.sub, .cv .row .c > div:first-child { break-after: avoid; } /* …but a heading never ends a page */
+  .cv .row.short { break-inside: avoid; }  /* …but short entries stay whole */
+  a { text-decoration: none; }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 0 3.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   SMALL SCREENS
+   ============================================================ */
+@media (max-width: 640px) {
+  :root { --base: 1.0625rem; }
+  .hero { padding-top: 3rem; }
+  .hero h1 { font-size: 2rem; }
+}
